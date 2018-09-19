@@ -179,7 +179,7 @@ class MainViewController: UIViewController,Navigationable,UITableViewDelegate,UI
                         newCell.selectCell(enabled: true)
                     }
                     
-                    self.viewModelObject?.lastSelectedOptionIndex = optionobject.element?.id ?? "6"
+                    self.viewModelObject?.lastSelectedOptionIndex = optionobject.element?.id ?? Six
                     
                 }else{
                     
@@ -191,11 +191,11 @@ class MainViewController: UIViewController,Navigationable,UITableViewDelegate,UI
         self.facilityCollectionView.rx.modelSelected(Option.self)
             .subscribe(({optionobject in
                 if(optionobject.element?.id != self.viewModelObject?.lastSelectedIndex){
-                    if let cell = self.facilityCollectionView.cellForItem(at: IndexPath(row: Int(optionobject.element?.id ?? "1")! - 1, section: 0)) as? FacilityCollectionViewCell {
+                    if let cell = self.facilityCollectionView.cellForItem(at: IndexPath(row: Int(optionobject.element?.id ?? One)! - 1, section: 0)) as? FacilityCollectionViewCell {
                         cell.showSelectedState(true)
                     }
                     
-                    if let oldCell = self.facilityCollectionView.cellForItem(at: IndexPath(row: Int(self.viewModelObject?.lastSelectedIndex ?? "1")!-1, section: 0)) as? FacilityCollectionViewCell {
+                    if let oldCell = self.facilityCollectionView.cellForItem(at: IndexPath(row: Int(self.viewModelObject?.lastSelectedIndex ?? One)!-1, section: 0)) as? FacilityCollectionViewCell {
                         oldCell.showSelectedState(false)
                     }
                 self.viewModelObject!.collectionViewSelected(optionObject:optionobject.element!)

@@ -31,6 +31,8 @@ class OptionsTableViewCell:UITableViewCell {
         viewDict = ["optionNameLabel":optionNameLabel,"optionIconImageView":optionIconImageView]
         addConstraints()
     }
+    
+    
     //MARK:Constraints
     func addConstraints() {
         self.addSubview(optionNameLabel)
@@ -43,10 +45,14 @@ class OptionsTableViewCell:UITableViewCell {
         self.addConstraint(NSLayoutConstraint(item: optionIconImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
         
         self.addConstraint(NSLayoutConstraint(item: optionIconImageView, attribute: .width, relatedBy: .equal, toItem: optionIconImageView, attribute: .height, multiplier: 1.0, constant: 0.0))
+         self.addConstraint(NSLayoutConstraint(item: optionIconImageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40.0))
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
     //MARK: Updated to change cells color
     func selectCell(enabled:Bool) {
         if(optionData?.isDisabled ?? false) {

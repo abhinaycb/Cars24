@@ -60,6 +60,7 @@ class FacilityCollectionViewCell:UICollectionViewCell {
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[footerView]-(10)-|", options: [], metrics: nil, views: viewDict))
         NSLayoutConstraint(item: facilityImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: facilityImageView, attribute: .width, relatedBy: .equal, toItem: facilityImageView, attribute: .height, multiplier: 1.0, constant: 0.0).isActive=true
+         NSLayoutConstraint(item: facilityImageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40).isActive=true
     }
     
     //MARK: State Update

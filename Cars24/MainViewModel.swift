@@ -16,8 +16,8 @@ class MainViewModel {
     var coordinator: SceneCoordinatorType?
     let sharedInstance = NetworkManager.sharedInstance
     private var modelData:BehaviorRelay<FacilitiesModel>
-    var lastSelectedIndex = "1"
-    var lastSelectedOptionIndex = "6"
+    var lastSelectedIndex = One
+    var lastSelectedOptionIndex = Six
     var facilitiesArray: BehaviorRelay<[Option]>
     var currentOptionsArray: BehaviorRelay<[Option]>
     let disposeBag = DisposeBag()
@@ -30,7 +30,7 @@ class MainViewModel {
         
         self.modelData.asObservable().subscribe(onNext: {data in
             let extractedFacilitiesArray = data.facilities?.filter({ (facility) -> Bool in
-                return facility.facility_id == "1" && facility.name == "Property Type"
+                return facility.facility_id == One && facility.name == StringConstants.propertyType
             }).first?.options
             
             if(extractedFacilitiesArray?[0].id != nil){
@@ -51,9 +51,6 @@ class MainViewModel {
          fetch from coredata model Object and populate facilitiesArray
          & OptionsArray to show locally saved UI
          }*/
-        
-        
-        
         sharedInstance.getDataForFacilititesAndOptions { (model, error) in
             if(error == nil && model != nil) {
                 self.modelData.accept(model!)
@@ -68,7 +65,7 @@ class MainViewModel {
         var options:[Option] = []
         
         for facility in modelData.value.facilities ?? [] {
-            if(facility.facility_id != "1"){
+            if(facility.facility_id != One){
                 options += facility.options ?? []
             }
         }
@@ -102,12 +99,12 @@ class MainViewModel {
     
     //MARK: CollectionView And TableView Cell Select
     func collectionViewSelected(optionObject:Option) {
-       lastSelectedIndex = optionObject.id ?? "1"
-       self.facilitiesArray.accept((self.findOptionsArrayForSelectedProperty(forId: optionObject.id ?? "1")))
-        lastSelectedOptionIndex = "6"
+       lastSelectedIndex = optionObject.id ?? One
+       self.facilitiesArray.accept((self.findOptionsArrayForSelectedProperty(forId: optionObject.id ?? One)))
+        lastSelectedOptionIndex = Six
     }
     
     func tapped(pageObject:Option) {
-        self.facilitiesArray.accept((self.findOptionsArrayForSelectedProperty(forId: pageObject.id ?? "1")))
+        self.facilitiesArray.accept((self.findOptionsArrayForSelectedProperty(forId: pageObject.id ?? One)))
     }
 }

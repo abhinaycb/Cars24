@@ -41,8 +41,11 @@ struct IntConstants {
     static let tableHeight:CGFloat = 100.0
     static let collectionViewItemHeight:CGFloat = 100.0
 }
+let One = "1"
+let Six = "6"
 
 struct StringConstants {
+    static let propertyType = "Property Type"
     static let propertyHeaderText = "Properties"
     static let facilityHeaderText = "Options"
     
